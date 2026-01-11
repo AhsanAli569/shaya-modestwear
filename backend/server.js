@@ -1,4 +1,6 @@
 import express from "express";
+
+import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -19,8 +21,7 @@ const PORT = process.env.PORT || 5000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-
-// CORS configuration for production
+// CORS configuration for production (MUST be before any routes/static)
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
@@ -28,9 +29,8 @@ const allowedOrigins = [
   'https://www.shayamodestwear.com'
 ];
 
-app.use(cors({
+const corsOptions = {
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps, curl, etc.)
     if (!origin) return callback(null, true);
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
@@ -40,6 +40,13 @@ app.use(cors({
   },
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
+// Handle preflight requests for all routes
+app.options("*", cors(corsOptions));
+
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
