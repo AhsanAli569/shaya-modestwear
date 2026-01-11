@@ -2,7 +2,8 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   // Change this to your Render backend URL after deployment
-  baseURL: "https://YOUR-BACKEND-URL.onrender.com/api",
+  baseURL: "https://shayamodestwear-backend.onrender.com/api", // Update to your actual backend URL
+  withCredentials: true, // Send cookies for CORS
 });
 
 // Add token to all requests
