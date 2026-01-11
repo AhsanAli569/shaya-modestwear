@@ -19,6 +19,7 @@ const PORT = process.env.PORT || 5000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+
 // CORS configuration for production
 const allowedOrigins = [
   'http://localhost:5173',
@@ -29,9 +30,8 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (mobile apps, Postman, etc)
     if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) !== -1) {
+    if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
