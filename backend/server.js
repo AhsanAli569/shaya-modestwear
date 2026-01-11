@@ -41,26 +41,17 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
+// CORS must be first middleware
 app.use(cors(corsOptions));
-// Handle preflight requests for all routes
 app.options("*", cors(corsOptions));
 
-// Fallback: Always set CORS headers for allowed origins
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.header("Access-Control-Allow-Origin", origin);
-    res.header("Access-Control-Allow-Credentials", "true");
-    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,PATCH,OPTIONS");
-    res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
-  }
-  next();
-});
-
 app.use(express.json());
-
-// VERY IMPORTANT FOR FORMDATA
 app.use(express.urlencoded({ extended: true }));
+
+// Health check route
+app.get("/", (req, res) => {
+  res.send("API is running");
+});
 
 // Static uploads folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
