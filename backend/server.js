@@ -45,24 +45,6 @@ app.use(cors(corsOptions));
 // Handle preflight requests for all routes
 app.options("*", cors(corsOptions));
 
-  allowedHeaders: ["Content-Type", "Authorization"],
-}));
-
-// Ensure CORS preflight requests are handled
-app.options("*", cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-}));
-
 app.use(express.json());
 
 // VERY IMPORTANT FOR FORMDATA
