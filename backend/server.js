@@ -53,6 +53,11 @@ app.get("/", (req, res) => {
   res.send("API is running");
 });
 
+// Catch-all for undefined routes
+app.use((req, res) => {
+  res.status(404).json({ success: false, message: "Route not found" });
+});
+
 // Static uploads folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
