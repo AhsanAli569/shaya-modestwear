@@ -27,7 +27,7 @@ export default function Navbar() {
 
   const fetchAvailableCategories = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/products");
+      const res = await fetch("https://shayamodestwear-backend.onrender.com/api/products");
       const products = await res.json();
       
       // Handle both array and single object responses

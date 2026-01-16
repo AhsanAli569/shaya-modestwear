@@ -95,7 +95,7 @@ export default function Products() {
               <div className="product-card">
                 <div className="product-image-wrapper">
                   <img
-                    src={`http://localhost:5000/uploads/${p.image}`}
+                    src={`https://shayamodestwear-backend.onrender.com/uploads/${p.image}`}
                     alt={p.name}
                     className="product-image"
                   />

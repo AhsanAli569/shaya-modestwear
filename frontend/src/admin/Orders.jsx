@@ -131,7 +131,7 @@ export default function Orders() {
                   {o.paymentProof ? (
                     <div className="payment-proof">
                       <img
-                        src={`http://localhost:5000/uploads/payments/${o.paymentProof}`}
+                        src={`https://shayamodestwear-backend.onrender.com/uploads/payments/${o.paymentProof}`}
                         alt="Payment Screenshot"
                         className="payment-image"
                       />
@@ -178,7 +178,7 @@ export default function Orders() {
                   <div key={i} className="item-row">
                     {item.image && (
                       <img 
-                        src={`http://localhost:5000/uploads/${item.image}`} 
+                        src={`https://shayamodestwear-backend.onrender.com/uploads/${item.image}`} 
                         alt={item.name}
                         className="item-image"
                       />

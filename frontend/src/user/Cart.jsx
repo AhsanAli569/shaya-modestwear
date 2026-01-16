@@ -84,7 +84,7 @@ export default function Cart() {
         cart.map((item) => (
           <div className="card" key={item._id}>
             <img
-              src={`http://localhost:5000/uploads/${item.image}`}
+              src={`https://shayamodestwear-backend.onrender.com/uploads/${item.image}`}
               style={{ width: "100px", borderRadius: "10px" }}
             />
 

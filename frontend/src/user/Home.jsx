@@ -143,7 +143,7 @@ export default function Home() {
               <Link to={`/product/${product._id}`} key={product._id} className="sale-product-card">
                 <div className="sale-image-wrapper">
                   <img 
-                    src={`http://localhost:5000/uploads/${product.image}`} 
+                    src={`https://shayamodestwear-backend.onrender.com/uploads/${product.image}`} 
                     alt={product.name}
                   />
                   <div className="sale-discount-badge">
@@ -198,7 +198,7 @@ export default function Home() {
                     <span className="badge-out-stock">Sold Out</span>
                   )}
                   <img 
-                    src={`http://localhost:5000/uploads/${product.image}`} 
+                    src={`https://shayamodestwear-backend.onrender.com/uploads/${product.image}`} 
                     alt={product.name}
                     className="product-image-home"
                   />

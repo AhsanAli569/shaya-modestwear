@@ -80,7 +80,7 @@ export default function ProductDetails() {
       <div className="product-details-wrapper">
         <div className="product-image-section">
           <img
-            src={`http://localhost:5000/uploads/${p.image}`}
+            src={`https://shayamodestwear-backend.onrender.com/uploads/${p.image}`}
             alt={p.name}
             className="product-detail-image"
           />

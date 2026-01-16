@@ -87,7 +87,7 @@ export default function ManageProducts() {
             <div className="product-card-admin" key={p._id}>
               <div className="product-image-container">
                 <img
-                  src={`http://localhost:5000/uploads/${p.image}`}
+                  src={`https://shayamodestwear-backend.onrender.com/uploads/${p.image}`}
                   alt={p.name}
                   className="product-image-admin"
                   onError={(e) => {
