@@ -50,6 +50,19 @@
   text-decoration: none;
   transition: transform 0.3s ease;
 }
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 40px;
+  margin-right: 12px;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+}
 
 .navbar-logo:hover {
   transform: scale(1.05);

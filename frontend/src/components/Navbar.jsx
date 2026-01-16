@@ -1,7 +1,9 @@
+
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import "./Navbar.css";
+import logo from "../assets/shaya-logo.png";
 
 export default function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -111,38 +113,39 @@ export default function Navbar() {
 
         {/* Right Section */}
         <div className="navbar-actions">
-          {/* Cart */}
-          <Link to="/cart" className="nav-cart-btn">
-            <span className="cart-icon">🛒</span>
-            {cartItemsCount > 0 && (
-              <span className="cart-badge">{cartItemsCount}</span>
-            )}
-            <span className="cart-text">Cart</span>
-          </Link>
-
-          {/* Account Section */}
-          {isLoggedIn ? (
-            <div className="account-menu">
-              <button className="account-btn">
-                <span className="account-icon">👤</span>
-                <span>Account</span>
-              </button>
-              <div className="account-dropdown">
-                <Link to="/my-orders" className="dropdown-item">
-                  📋 My Orders
-                </Link>
-                <button onClick={handleLogout} className="dropdown-item logout-btn">
-                  🚪 Logout
+          return (
+            <nav className="navbar">
+              <div className="navbar-left">
+                <img src={logo} alt="Shaya Logo" className="navbar-logo" style={{height: "40px", marginRight: "12px"}} />
+                <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                  <span className="menu-icon">&#9776;</span>
                 </button>
+                <Link to="/" className="navbar-brand">
+                  Shaya MODESTWEAR
+                </Link>
+                <div className={`navbar-links ${isMenuOpen ? "open" : ""}`}> 
+                  <Link to="/">Home</Link>
+                  <Link to="/categories">Categories</Link>
+                  <Link to="/about">About Us</Link>
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className="auth-buttons">
-              <Link to="/login" className="btn-login">Login</Link>
-              <Link to="/signup" className="btn-signup">Sign Up</Link>
-            </div>
-          )}
-
+              <div className="navbar-right">
+                <Link to="/cart" className="cart-link">
+                  <span className="cart-icon">🛒</span>
+                  Cart
+                  {cart.length > 0 && <span className="cart-count">{cart.length}</span>}
+                </Link>
+                {!isLoggedIn ? (
+                  <>
+                    <Link to="/login" className="login-link">Login</Link>
+                    <Link to="/signup" className="signup-link">Sign Up</Link>
+                  </>
+                ) : (
+                  <button className="logout-btn" onClick={handleLogout}>Logout</button>
+                )}
+              </div>
+            </nav>
+          );
           {/* Admin Link */}
           <Link to="/admin" className="admin-link">
             <span className="admin-icon">⚙️</span>
