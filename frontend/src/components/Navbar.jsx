@@ -116,13 +116,10 @@ export default function Navbar() {
           return (
             <nav className="navbar">
               <div className="navbar-left">
-                <img src={logo} alt="Shaya Logo" className="navbar-logo" style={{height: "40px", marginRight: "12px"}} />
-                <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                  <span className="menu-icon">&#9776;</span>
-                </button>
-                <Link to="/" className="navbar-brand">
-                  Shaya MODESTWEAR
+                <Link to="/" className="navbar-logo-link">
+                  <img src={logo} alt="Shaya Logo" className="navbar-logo" />
                 </Link>
+                <Link to="/" className="navbar-brand">Shaya MODESTWEAR</Link>
                 <div className={`navbar-links ${isMenuOpen ? "open" : ""}`}> 
                   <Link to="/">Home</Link>
                   <Link to="/categories">Categories</Link>
