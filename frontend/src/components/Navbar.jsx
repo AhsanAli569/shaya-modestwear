@@ -76,7 +76,7 @@ export default function Navbar() {
           <img src={logo} alt="Shaya Logo" className="navbar-logo" />
         </Link>
         <Link to="/" className="navbar-brand">Shaya MODESTWEAR</Link>
-        <div className={`navbar-links ${isMenuOpen ? "open" : ""}`}> 
+        <div className="navbar-links">
           <Link to="/">Home</Link>
           <Link to="/categories">Categories</Link>
           <Link to="/about">About Us</Link>
