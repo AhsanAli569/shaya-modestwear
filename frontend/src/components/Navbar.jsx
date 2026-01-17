@@ -72,40 +72,67 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-main">
-        {/* Logo - top left, clickable */}
-        <Link to="/" className="navbar-logo-link">
-          <img src={logo} alt="Shaya Logo" className="navbar-logo" />
-        </Link>
-        {/* Navigation links - left/center */}
-        <div className="navbar-links">
-          <Link to="/">Home</Link>
-          <Link to="/categories">Categories</Link>
-          <Link to="/about">About Us</Link>
-          {isLoggedIn && (
-            <Link to="/my-orders" className="nav-orders">My Orders</Link>
-          )}
+        <div className="navbar-group-left">
+          <Link to="/" className="navbar-logo-link">
+            <img src={logo} alt="Shaya Logo" className="navbar-logo" />
+          </Link>
+          <div className="navbar-links">
+            <Link to="/">Home</Link>
+            <Link to="/categories">Categories</Link>
+            <Link to="/about">About Us</Link>
+            {isLoggedIn && (
+              <Link to="/my-orders" className="nav-orders">My Orders</Link>
+            )}
+          </div>
         </div>
-        {/* User actions - right */}
-        <div className="navbar-actions">
-          <Link to="/cart" className="cart-link">
-            <span className="cart-icon">🛒</span>
-            Cart
-            {cart.length > 0 && <span className="cart-count">{cart.length}</span>}
-          </Link>
-          {!isLoggedIn ? (
-            <>
-              <Link to="/login" className="login-link">Login</Link>
-              <Link to="/signup" className="signup-link">Sign Up</Link>
-            </>
-          ) : (
-            <button className="logout-btn" onClick={handleLogout}>Logout</button>
-          )}
-          <Link to="/admin" className="admin-link">
-            <span className="admin-icon">⚙️</span>
-            Admin
-          </Link>
+        <div className="navbar-group-right">
+          <div className="navbar-actions">
+            <Link to="/cart" className="cart-link">
+              <span className="cart-icon">🛒</span>
+              Cart
+              {cart.length > 0 && <span className="cart-count">{cart.length}</span>}
+            </Link>
+            {!isLoggedIn ? (
+              <>
+                <Link to="/login" className="login-link">Login</Link>
+                <Link to="/signup" className="signup-link">Sign Up</Link>
+              </>
+            ) : (
+              <button className="logout-btn" onClick={handleLogout}>Logout</button>
+            )}
+            <Link to="/admin" className="admin-link">
+              <span className="admin-icon">⚙️</span>
+              Admin
+            </Link>
+          </div>
         </div>
       </div>
+      {/* Mobile menu: only render on mobile and when open */}
+      {isMenuOpen && window.innerWidth <= 900 && (
+        <div className="mobile-menu-overlay" onClick={() => setIsMenuOpen(false)}>
+          <div className="mobile-menu" onClick={e => e.stopPropagation()}>
+            <button className="close-menu" onClick={() => setIsMenuOpen(false)} aria-label="Close menu">✕</button>
+            <div className="mobile-menu-links">
+              <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
+              <Link to="/categories" onClick={() => setIsMenuOpen(false)}>Categories</Link>
+              <Link to="/about" onClick={() => setIsMenuOpen(false)}>About Us</Link>
+              {isLoggedIn && (
+                <Link to="/my-orders" onClick={() => setIsMenuOpen(false)}>My Orders</Link>
+              )}
+              <Link to="/cart" onClick={() => setIsMenuOpen(false)}>Cart</Link>
+              {!isLoggedIn ? (
+                <>
+                  <Link to="/login" onClick={() => setIsMenuOpen(false)}>Login</Link>
+                  <Link to="/signup" onClick={() => setIsMenuOpen(false)}>Sign Up</Link>
+                </>
+              ) : (
+                <button className="logout-btn" onClick={() => { handleLogout(); setIsMenuOpen(false); }}>Logout</button>
+              )}
+              <Link to="/admin" onClick={() => setIsMenuOpen(false)}>Admin</Link>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
