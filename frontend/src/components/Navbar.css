@@ -39,26 +39,33 @@
   .navbar-left {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 32px;
+    padding-left: 18px;
   }
   .navbar-logo-link {
     display: flex;
     align-items: center;
   }
   .navbar-logo {
-    height: 44px;
-    margin-right: 8px;
+    height: 54px;
+    width: auto;
+    margin-right: 18px;
+    margin-left: 0;
+    display: block;
   }
   .navbar-brand {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.7rem;
+    font-weight: 800;
     color: #C7A584;
     text-decoration: none;
-    margin-right: 32px;
+    margin-right: 40px;
+    letter-spacing: 1px;
   }
   .navbar-links {
     display: flex;
-    gap: 24px;
+    gap: 28px;
+    align-items: center;
+    margin-left: 10px;
   }
   .navbar-links a {
     color: #1A1A1A;
@@ -73,7 +80,8 @@
   .navbar-right {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 24px;
+    margin-right: 24px;
   }
   .cart-link {
     display: flex;
