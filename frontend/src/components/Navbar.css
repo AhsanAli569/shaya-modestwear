@@ -25,16 +25,19 @@
   height: 3px;
   /* Navbar Layout Fix */
   .navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 32px;
+    width: 100%;
     background: #fff;
     box-shadow: 0 2px 8px rgba(199, 165, 132, 0.08);
     position: sticky;
     top: 0;
     z-index: 100;
+  }
+  .navbar-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 72px;
   }
   .navbar-left {
     display: flex;
@@ -45,10 +48,14 @@
   .navbar-logo-link {
     display: flex;
     align-items: center;
+    margin-right: 32px;
   }
-  .navbar-logo {
-    height: 54px;
+    height: 48px;
     width: auto;
+    margin-right: 0;
+    margin-left: 0;
+    display: block;
+  }
     margin-right: 18px;
     margin-left: 0;
     display: block;
@@ -61,9 +68,10 @@
     margin-right: 40px;
     letter-spacing: 1px;
   }
-  .navbar-links {
     display: flex;
-    gap: 28px;
+    align-items: center;
+    gap: 24px;
+  }
     align-items: center;
     margin-left: 10px;
   }
@@ -159,10 +167,10 @@
 }
 
 /* ===== ACTIONS SECTION ===== */
-.navbar-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
+}
 }
 
 /* Cart Button */
@@ -296,28 +304,65 @@
   gap: 12px;
 }
 
-.btn-login {
-  padding: 10px 20px;
-  background: transparent;
-  color: #56642A;
-  border: 2px solid #56642A;
-  border-radius: 10px;
+.admin-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #ffe5a0;
+  color: #8b7355;
   text-decoration: none;
+  border-radius: 8px;
   font-weight: 600;
   font-size: 14px;
-  transition: all 0.3s ease;
-  display: inline-block;
+  margin-left: 16px;
+  transition: all 0.2s ease;
 }
-
-.btn-login:hover {
-  background: #56642A;
-  color: white;
-  transform: translateY(-2px);
+.admin-link:hover {
+  background: #ffe5a0;
+  color: #6b573a;
+  box-shadow: 0 2px 8px rgba(199, 165, 132, 0.15);
 }
-
-.btn-signup {
-  padding: 10px 20px;
-  background: #56642A;
+.admin-icon {
+  font-size: 16px;
+}
+  @media (max-width: 900px) {
+    .navbar-main {
+      flex-direction: row;
+      padding: 0 12px;
+      height: 56px;
+    }
+    .navbar-logo {
+      height: 36px;
+    }
+    .navbar-links {
+      gap: 12px;
+      font-size: 15px;
+    }
+    .navbar-actions {
+      gap: 10px;
+    }
+    .admin-link {
+      font-size: 12px;
+      padding: 6px 10px;
+    }
+  }
+  @media (max-width: 600px) {
+    .navbar-main {
+      flex-direction: row;
+      padding: 0 6px;
+      height: 48px;
+    }
+    .navbar-logo {
+      height: 28px;
+    }
+    .navbar-links {
+      display: none;
+    }
+    .navbar-actions {
+      gap: 6px;
+    }
+  }
   color: white;
   border-radius: 10px;
   text-decoration: none;

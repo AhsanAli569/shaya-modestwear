@@ -71,11 +71,12 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="navbar-left">
+      <div className="navbar-main">
+        {/* Logo - top left, clickable */}
         <Link to="/" className="navbar-logo-link">
           <img src={logo} alt="Shaya Logo" className="navbar-logo" />
         </Link>
-        <Link to="/" className="navbar-brand">Shaya MODESTWEAR</Link>
+        {/* Navigation links - left/center */}
         <div className="navbar-links">
           <Link to="/">Home</Link>
           <Link to="/categories">Categories</Link>
@@ -84,25 +85,26 @@ export default function Navbar() {
             <Link to="/my-orders" className="nav-orders">My Orders</Link>
           )}
         </div>
-      </div>
-      <div className="navbar-right">
-        <Link to="/cart" className="cart-link">
-          <span className="cart-icon">🛒</span>
-          Cart
-          {cart.length > 0 && <span className="cart-count">{cart.length}</span>}
-        </Link>
-        {!isLoggedIn ? (
-          <>
-            <Link to="/login" className="login-link">Login</Link>
-            <Link to="/signup" className="signup-link">Sign Up</Link>
-          </>
-        ) : (
-          <button className="logout-btn" onClick={handleLogout}>Logout</button>
-        )}
-        <Link to="/admin" className="admin-link">
-          <span className="admin-icon">⚙️</span>
-          Admin
-        </Link>
+        {/* User actions - right */}
+        <div className="navbar-actions">
+          <Link to="/cart" className="cart-link">
+            <span className="cart-icon">🛒</span>
+            Cart
+            {cart.length > 0 && <span className="cart-count">{cart.length}</span>}
+          </Link>
+          {!isLoggedIn ? (
+            <>
+              <Link to="/login" className="login-link">Login</Link>
+              <Link to="/signup" className="signup-link">Sign Up</Link>
+            </>
+          ) : (
+            <button className="logout-btn" onClick={handleLogout}>Logout</button>
+          )}
+          <Link to="/admin" className="admin-link">
+            <span className="admin-icon">⚙️</span>
+            Admin
+          </Link>
+        </div>
       </div>
     </nav>
   );
